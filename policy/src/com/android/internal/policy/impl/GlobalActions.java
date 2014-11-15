@@ -416,7 +416,7 @@ private final class RebootRecoveryAction extends SinglePressAction {
             try {
                 IPowerManager powermanager = IPowerManager.Stub.asInterface(ServiceManager
                         .getService(Context.POWER_SERVICE));
-                powermanager.reboot("recovery");
+                powermanager.reboot(true, "recovery", false);
             } catch (RemoteException e) {
                 Log.e(TAG, "PowerManager service died!", e);
                 return;
