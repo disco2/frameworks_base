@@ -493,16 +493,13 @@ public class TaskStackView extends FrameLayout implements TaskStack.TaskStackCal
                         TaskView tv = getChildViewForTask(t);
                         if (tv != null) {
                             tv.dismissTask();
-                            // Trying to avoid lag
-                            try {
-                                Thread.sleep(150);
-                            } catch (InterruptedException e) {
-                            }
                         }
                     }
                 }
             }
         });
+        // Call the method again to clear them out
+        if (stackSize >= 2) clearRecents();
     }
 
     @Override
