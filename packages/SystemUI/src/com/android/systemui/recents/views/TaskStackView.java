@@ -498,8 +498,6 @@ public class TaskStackView extends FrameLayout implements TaskStack.TaskStackCal
                 }
             }
         });
-        // Call the method again to clear them out
-        if (stackSize >= 2) clearRecents();
     }
 
     @Override
