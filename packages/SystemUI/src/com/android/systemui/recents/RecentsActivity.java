@@ -248,9 +248,9 @@ public class RecentsActivity extends Activity implements RecentsView.RecentsView
                 mEmptyView.setVisibility(View.GONE);
             }
             if (mRecentsView.hasSearchBar()) {
-                mRecentsView.setSearchBarVisibility(View.VISIBLE);
+                mRecentsView.setSearchBarVisibility(View.GONE);
             } else {
-                addSearchBarAppWidgetView();
+                //addSearchBarAppWidgetView();
             }
         }
 
