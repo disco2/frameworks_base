@@ -74,6 +74,7 @@ public class RecentsActivity extends Activity implements RecentsView.RecentsView
     View mEmptyView;
     DebugOverlayView mDebugOverlay;
 
+
     // Search AppWidget
     RecentsAppWidgetHost mAppWidgetHost;
     AppWidgetProviderInfo mSearchAppWidgetInfo;
@@ -81,6 +82,10 @@ public class RecentsActivity extends Activity implements RecentsView.RecentsView
 
     // Runnables to finish the Recents activity
     FinishRecentsRunnable mFinishLaunchHomeRunnable;
+
+
+Context mContext;
+
 
     static SpaceNode root;
     static NavigationBarView mNavigationBarView;
@@ -275,9 +280,6 @@ public class RecentsActivity extends Activity implements RecentsView.RecentsView
                
 
 
-Context mContext;
-
-
         if (Settings.System.getInt(mContext.getContentResolver(),
              Settings.System.RECENTS_SHOW_HIDE_SEARCH_BAR, 1) == 0) {
 mRecentsView.setSearchBarVisibility(View.VISIBLE);
@@ -285,12 +287,8 @@ mRecentsView.setSearchBarVisibility(View.VISIBLE);
 mRecentsView.setSearchBarVisibility(View.GONE);
 }
 
-
-
-            } else {
+ } else {
                
-
-
         if (Settings.System.getInt(mContext.getContentResolver(),
              Settings.System.RECENTS_SHOW_HIDE_SEARCH_BAR, 1) == 0) {
 addSearchBarAppWidgetView();
