@@ -47,6 +47,7 @@ import com.android.systemui.recents.views.DebugOverlayView;
 import com.android.systemui.recents.views.RecentsView;
 import com.android.systemui.recents.views.SystemBarScrimViews;
 import com.android.systemui.recents.views.ViewAnimation;
+import android.provider.Settings;
 
 import java.lang.ref.WeakReference;
 import java.lang.reflect.InvocationTargetException;
@@ -236,6 +237,45 @@ public class RecentsActivity extends Activity implements RecentsView.RecentsView
             }
         }
 
+
+	// if search bar enabled
+        if (Settings.System.getInt(mContext.getContentResolver(),
+             Settings.System.RECENTS_SHOW_HIDE_SEARCH_BAR, 1) == 0) {
+
+
+
+        // Update the top level view's visibilities
+        if (mConfig.launchedWithNoRecentTasks) {
+            if (mEmptyView == null) {
+                mEmptyView = mEmptyViewStub.inflate();
+            }
+            mEmptyView.setVisibility(View.VISIBLE);
+            mRecentsView.setSearchBarVisibility(View.GONE);
+        } else {
+            if (mEmptyView != null) {
+                mEmptyView.setVisibility(View.GONE);
+            }
+            if (mRecentsView.hasSearchBar()) {
+                mRecentsView.setSearchBarVisibility(View.VISIBLE);
+            } else {
+                addSearchBarAppWidgetView();
+            }
+        }
+
+        // Animate the SystemUI scrims into view
+        mScrimViews.prepareEnterRecentsAnimation();
+    }
+
+
+}
+
+
+	// if search bar disabled
+        if (Settings.System.getInt(mContext.getContentResolver(),
+             Settings.System.RECENTS_SHOW_HIDE_SEARCH_BAR, 1) == 1) {
+
+
+
         // Update the top level view's visibilities
         if (mConfig.launchedWithNoRecentTasks) {
             if (mEmptyView == null) {
@@ -257,6 +297,10 @@ public class RecentsActivity extends Activity implements RecentsView.RecentsView
         // Animate the SystemUI scrims into view
         mScrimViews.prepareEnterRecentsAnimation();
     }
+
+
+}
+
 
     /** Attempts to allocate and bind the search bar app widget */
     void bindSearchBarAppWidget() {
