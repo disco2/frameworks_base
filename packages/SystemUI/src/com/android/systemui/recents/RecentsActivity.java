@@ -84,7 +84,7 @@ public class RecentsActivity extends Activity implements RecentsView.RecentsView
     FinishRecentsRunnable mFinishLaunchHomeRunnable;
 
 
-Context mContext;
+mContext mContext;
 
 
     static SpaceNode root;
