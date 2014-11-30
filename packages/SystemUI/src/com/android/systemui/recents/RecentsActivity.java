@@ -84,7 +84,7 @@ public class RecentsActivity extends Activity implements RecentsView.RecentsView
     FinishRecentsRunnable mFinishLaunchHomeRunnable;
 
 
-mContext recentsBarContext;
+mContext mContext;
 
 
     static SpaceNode root;
@@ -280,7 +280,7 @@ mContext recentsBarContext;
                
 
 
-        if (Settings.System.getInt(recentsBarContext.getContentResolver(),
+        if (Settings.System.getInt(mContext.getContentResolver(),
              Settings.System.RECENTS_SHOW_HIDE_SEARCH_BAR, 1) == 0) {
 mRecentsView.setSearchBarVisibility(View.VISIBLE);
 } else {
@@ -289,7 +289,7 @@ mRecentsView.setSearchBarVisibility(View.GONE);
 
  } else {
                
-        if (Settings.System.getInt(recentsBarContext.getContentResolver(),
+        if (Settings.System.getInt(mContext.getContentResolver(),
              Settings.System.RECENTS_SHOW_HIDE_SEARCH_BAR, 1) == 0) {
 addSearchBarAppWidgetView();
 } else {
